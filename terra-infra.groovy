@@ -17,9 +17,11 @@ pipeline {
         }
         stage('Deploy') {
            steps {
-               sh ''' cd /terraform/eks
+                sh ''' 
+                   cd terraform/eks
                    terraform init
-                   terraform apply '''
+                   terraform apply 
+                   '''
            }
        }
      }
