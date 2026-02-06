@@ -1,24 +1,26 @@
 pipeline {
-    agent {label 'node1'}
+    agent {label 'slave'}
     stages {
         stage('Pull') {
             steps {
-                git branch: 'main', url: 'https://github.com/Anilbamnote/oncdec-b18.git'
+                git branch: 'main', url: 'https://github.com/Anilbamnote/47-cdec.git'
             }
         }
         stage('Test') {
             steps {
-                sh ''' cd /terraform/eks
-                    terraform init
-                    terraform plan'''
+               sh '''
+                cd terraform/eks
+                terraform init
+                terraform plan
+                '''
             }
         }
-        stage('Deploy') {
-            steps {
-                sh ''' cd /terraform/eks
-                    terraform init
-                    terraform apply --auto-approve'''
-            }
-        }
+        //stage('Deploy') {
+           // steps {
+              //  sh ''' cd /terraform/eks
+                   // terraform init
+                   // terraform apply --auto-approve'''
+          //  }
+       // }
+     }
     }
-}
