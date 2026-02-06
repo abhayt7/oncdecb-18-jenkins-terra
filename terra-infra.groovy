@@ -19,7 +19,7 @@ pipeline {
            steps {
                sh ''' cd /terraform/eks
                    terraform init
-                   terraform apply --auto-approve'''
+                   terraform apply '''
            }
        }
      }
