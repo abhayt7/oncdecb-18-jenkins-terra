@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Pull') {
             steps {
-                git branch: 'main', url: 'https://github.com/Anilbamnote/47-cdec.git'
+                git branch: 'main', url: 'https://github.com/abhayt7/47-cdec-app.git'
             }
         }
         stage('Test') {
