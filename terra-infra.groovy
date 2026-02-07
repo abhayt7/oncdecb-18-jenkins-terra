@@ -26,3 +26,18 @@ pipeline {
        }
      }
     }
+
+stage('Destroy') {
+            when {
+                expression { params.ACTION == 'destroy' }
+            }
+            steps {
+                input message: '⚠️ Are you sure you want to DESTROY all infra?', ok: 'Yes, Destroy'
+                sh '''
+                cd terraform/eks
+                terraform destroy -auto-approve
+                '''
+            }
+        }
+    }
+}
